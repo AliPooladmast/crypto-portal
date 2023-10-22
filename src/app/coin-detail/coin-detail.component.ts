@@ -62,7 +62,7 @@ export class CoinDetailComponent implements OnInit {
       this.currency = value;
 
       this.getCoinData();
-      this.getGraphData();
+      this.getGraphData(this.days);
     });
   }
 
@@ -73,8 +73,9 @@ export class CoinDetailComponent implements OnInit {
     });
   }
 
-  getGraphData() {
+  getGraphData(days: number) {
     if (!this.coinId) return;
+    this.days = days;
     this.api
       .getGraphicalCurrencyData(this.coinId, this.currency, this.days)
       .subscribe((res: any) => {
