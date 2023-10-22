@@ -1,5 +1,5 @@
 <div class="banner">
-  <div class="container">
+  <div class="container-fluid">
     <div class="header">
       <h2>Crypto Portal</h2>
       <h6>Check all the cypto currency latest updates</h6>
@@ -8,11 +8,28 @@
       <marquee
         behavior="scroll"
         direction="left"
-        onmouseover="stop()"
         onmouseout="start()"
+        onmouseover="stop()"
         loop="infinite"
       >
-        <div class="row">Crypto Currency</div>
+        <div class="card-container">
+          <ng-container *ngFor="let item of bannerData">
+            <div class="card">
+              <img [src]="item.image" width="100" class="img-fluid" alt="" />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ item.symbol | uppercase }}
+                  <span class="text-danger">{{
+                    item.market_cap_change_percentage_24h
+                  }}</span>
+                </h5>
+                <p class="card-text">
+                  {{ item.current_price | currency : "USD" }}
+                </p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
       </marquee>
     </div>
   </div>

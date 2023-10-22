@@ -15,7 +15,7 @@ export class ApiService {
 
   getTrendingCurrency(currency: string) {
     return this.http.get(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&sparkline=false&per_page=10&page=1&price_change_percentage=24h`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=volume_desc&sparkline=false&price_change_percentage=24h`
     );
   }
 

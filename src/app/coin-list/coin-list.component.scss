@@ -34,8 +34,36 @@
 }
 
 .sub-header {
-  width: 50%;
   display: flex;
   align-items: center;
   color: #fff;
+}
+
+.card-container {
+  margin-top: 40px;
+  display: flex;
+}
+
+.card {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  margin: 0 10px;
+  width: 200px;
+  height: 200px;
+
+  img {
+    width: 70px;
+    margin: 0 auto;
+  }
+
+  h5 {
+    font-weight: 500;
+    font-size: 0.7rem;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
 }
