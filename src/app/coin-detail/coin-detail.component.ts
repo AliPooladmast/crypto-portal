@@ -54,6 +54,7 @@ export class CoinDetailComponent implements OnInit {
     });
 
     this.getCoinData();
+    this.getGraphData();
   }
 
   getCoinData() {
@@ -61,5 +62,28 @@ export class CoinDetailComponent implements OnInit {
     this.api.getCurrencyById(this.coinId).subscribe((res) => {
       this.coinData = res;
     });
+  }
+
+  getGraphData() {
+    if (!this.coinId) return;
+    this.api
+      .getGraphicalCurrencyData(this.coinId, this.currency, this.days)
+      .subscribe((res: any) => {
+        this.lineChartData.datasets[0].data = res.prices.map(
+          (item: any) => item[1]
+        );
+
+        this.lineChartData.labels = res.prices.map((item: any) => {
+          const date = new Date(item[0]);
+
+          const time = `${date.getHours()}: ${date.getMinutes()}`;
+
+          return this.days === 1 ? time : date.toLocaleDateString();
+        });
+
+        setTimeout(() => {
+          this.myLineChart.update();
+        }, 0);
+      });
   }
 }
