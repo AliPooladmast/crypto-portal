@@ -13,11 +13,17 @@
           <span class="value">{{ coinData?.market_cap_rank }}</span> <br />
           <span class="title">Current Price: </span>
           <span class="value">{{
-            coinData?.market_data.current_price.usd
+            currency === "USD"
+              ? (coinData?.market_data.current_price.usd | currency : currency)
+              : (coinData?.market_data.current_price.eur | currency : currency)
           }}</span>
           <br />
           <span class="title">Market Cap: </span>
-          <span class="value">{{ coinData?.market_data.market_cap.usd }}</span>
+          <span class="value">{{
+            currency === "USD"
+              ? (coinData?.market_data.market_cap.usd | currency : currency)
+              : (coinData?.market_data.market_cap.eur | currency : currency)
+          }}</span>
           <br />
         </div>
       </div>

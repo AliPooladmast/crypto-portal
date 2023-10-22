@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CurrencyService } from './service/currency.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'crypto-portal';
-  selectedCurrency: string = 'EUR';
+  selectedCurrency: string = 'USD';
 
-  constructor() {}
+  constructor(private currencyService: CurrencyService) {}
 
   setCurrency = (event: string) => {
-    console.log(event);
+    this.currencyService.setCurreny(event);
   };
 }
